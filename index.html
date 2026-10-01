@@ -14,6 +14,7 @@
   --teal-light: #3a7a70;
   --teal-pale:  #eaf3f1;
   --orange:     #d4611a;
+  --orange-dark: #9d4610  /* 10% c85a00 or 25%= #9d4610 */
   --white:      #ffffff;
   --off-white:  #f7f7f5;
   --border:     #dddbd7;
@@ -45,6 +46,7 @@ body {
 }
 .top-bar a {
   color: rgba(255,255,255,0.72);
+  opacity: 1;
   font-size: 13px;
   text-decoration: none;
   display: flex;
@@ -52,7 +54,11 @@ body {
   gap: 6px;
   transition: color 0.18s;
 }
-.top-bar a:hover { color: #fff; }
+.top-bar a:hover {
+	color: rgba(255,255,255,0.72);
+	opacity: 1;
+	filter: none; 
+}
 
 /* ── NAV ── */
 nav {
@@ -346,6 +352,7 @@ h2.sh {
 .team-section {
   background: var(--off-white);
   border-top: 1px solid var(--border);
+  scroll-margin-top: 80px;
 }
 .team-grid {
   display: grid;
@@ -401,6 +408,15 @@ h2.sh {
   line-height: 1.75;
   flex: 1;
 }
+.team-cv {
+	color: var(--orange); 
+	text-decoration: underline;
+	transition: color 0.2s ease;
+}
+.team-cv:hover {
+	/* color: var(--orange-dark); */
+	filter: brightness(0.85);  /* 15% darker*/
+}
 .team-sub-label {
   font-size: 11px;
   font-weight: 700;
@@ -428,7 +444,11 @@ h2.sh {
 }
 
 /* ── SERVICES ── */
-.services-section { background: var(--white); border-top: 1px solid var(--border); }
+.services-section { 
+	background: var(--white); 
+	border-top: 1px solid var(--border); 
+	scroll-margin-top: 80px;
+	}
 .services-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -461,7 +481,11 @@ h2.sh {
 .service-item p { font-size: 14px; color: var(--text-mid); line-height: 1.75; }
 
 /* ── EDUCATION ── */
-.edu-section { background: var(--off-white); border-top: 1px solid var(--border); }
+.edu-section { 
+	background: var(--off-white); 
+	border-top: 1px solid var(--border); 
+	scroll-margin-top: 80px;
+	}
 .courses-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -515,7 +539,7 @@ h2.sh {
   cursor: pointer;
   transition: background 0.18s;
 }
-.course-btn:hover { background: var(--teal); }
+.course-btn:hover { background: #b8521a; }
 
 /* ── PUBLICATIONS ── */
 .pubs-section { background: var(--white); border-top: 1px solid var(--border); }
@@ -556,41 +580,6 @@ h2.sh {
   justify-content: center;
   flex-shrink: 0;
 }
-.contact-form { display: flex; flex-direction: column; gap: 12px; }
-.contact-form input,
-.contact-form select,
-.contact-form textarea {
-  width: 100%;
-  background: rgba(255,255,255,0.1);
-  border: 1px solid rgba(255,255,255,0.2);
-  padding: 11px 14px;
-  font-family: var(--sans);
-  font-size: 14px;
-  color: #fff;
-  outline: none;
-  transition: border-color 0.18s;
-}
-.contact-form input::placeholder,
-.contact-form textarea::placeholder { color: rgba(255,255,255,0.38); }
-.contact-form select option { background: var(--teal-dark); }
-.contact-form input:focus,
-.contact-form select:focus,
-.contact-form textarea:focus { border-color: rgba(255,255,255,0.6); }
-.contact-form textarea { min-height: 110px; resize: vertical; }
-.submit-btn {
-  background: var(--orange);
-  color: #fff;
-  border: none;
-  font-family: var(--sans);
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  padding: 14px;
-  cursor: pointer;
-  transition: background 0.18s;
-}
-.submit-btn:hover { background: #b8521a; }
 
 /* ── FOOTER ── */
 footer {
@@ -672,7 +661,7 @@ footer {
 </section>
 
 <!-- ABOUT -->
-<section id="about">
+<section id="about" style="scroll-margin-top: 80px;">
   <div class="page-inner">
     <p class="section-label">About Seistech Imaging</p>
     <hr class="section-rule" />
@@ -701,7 +690,7 @@ footer {
           <div class="team-role">Founder <em style="text-transform: none;">Seistech Imaging Inc</em> <br> Seismic Imaging Consultant</div>
           <p class="team-bio">38+ years of experience in seismic depth imaging, velocity model building, and high-performance algorithm development. 
           Has supervised well over 30,000 km² of 3D projects for Pemex, PDVSA, and Schlumberger across the Gulf of Mexico, Venezuela, and beyond.</p>
-				<a class="team-cv"  href="./CV_JCabrera_2025.pdf" style="color: var(--orange); text-decoration: underline;"> Curriculum Vitae </a> 
+				<a class="team-cv"  href="./CV_JCabrera_2025.pdf"> Curriculum Vitae </a> 
           <div class="team-sub-label">Specialisations</div>
           <ul class="team-list">
             <li>Seismic depth imaging</li>
@@ -712,7 +701,6 @@ footer {
           <div class="team-sub-label">Recognition</div>
           <ul class="team-list">
             <li>SEG Honorary Lecturer, Latin America (2011)</li>
-            <li>Ph.D. Geophysics, University of British Columbia</li>
           </ul>
         </div>
       </div>
@@ -726,7 +714,7 @@ footer {
           <div class="team-role">Associate Consultant <br> Senior Geophysical Advisor</div>
           <p class="team-bio" style="margin-bottom: 10%">Internationally recognized authority on velocity model building and seismic migration. Author of two landmark EAGE textbooks. 
           Former head of depth imaging R&amp;D at CGG (London/Paris) and Senior Geophysical Advisor at ION GX Technology; currently with BrightSkies Geoscience.</p>
-				<a class="team-cv"  href="./CV_IJones_2026.pdf" style="color: var(--orange); text-decoration: underline;"> Curriculum Vitae </a> 
+				<a class="team-cv"  href="./CV_IJones_2026.pdf"> Curriculum Vitae </a> 
           <div class="team-sub-label">Specialisations</div>
           <ul class="team-list">
             <li>Velocity model building &amp; migration</li>
@@ -755,7 +743,7 @@ footer {
           <div class="team-role">Associate Consultant <br> Structural Geology &amp; Tectonics</div>
           <p class="team-bio">Professor of Structural Geology and Tectonics at the University of Granada (Spain) and Research Affiliate at the Bureau of Economic Geology, UT Austin. 
           Specialist in shale and salt tectonics in fold-thrust belts and continental margins, and extensional basins.</p>
-				<a class="team-cv"  href="./CV_JSoto_2026.pdf" style="color: var(--orange); text-decoration: underline;"> Curriculum Vitae </a> 
+				<a class="team-cv"  href="./CV_JSoto_2026.pdf"> Curriculum Vitae </a> 
           <div class="team-sub-label">Specialisations</div>
           <ul class="team-list">
             <li>Shale tectonics</li>
@@ -836,7 +824,7 @@ footer {
           <p>A comprehensive introduction to PSDM workflows for geologists and geophysicists on exploration teams. Covers depth imaging principles, velocity model building, and quality assessment — with emphasis on geological interpretation in salt and mobile-shale environments.</p>
           <div class="course-footer">
             <span>In-person · English &amp; Spanish <br> Instructors: Dr.Cabrera, Dr.Jones, Dr.Soto </span>
-            <button class="course-btn"> <a href="./Course_Imaging-for-Geoscientists.pdf" style="color: white; text-decoration: underline;"> Contents</a> </button>
+            <button class="course-btn"> <a href="./Course_Imaging-for-Geoscientists.pdf" style="color: white; text-decoration: none ;"> Contents</a> </button>
           </div>
         </div>
       </div>
@@ -848,7 +836,7 @@ footer {
           <p>A review course on FWI technology for geophysicists involved in velocity model building and imaging QC. Covers the underlying principles, the use of RTM to estimate the location of subsurface parameters error, and introduce the many and varied 'flavors' of FWI, with their limitations and benefits.</p>
           <div class="course-footer">
             <span>In-person · English <br> Instructor: Dr.Jones </span>
-            <button class="course-btn"> <a href="./Course_FWI-Review-for-Geophysicists.pdf" style="color: white; text-decoration: underline;"> Contents </a> </button>
+            <button class="course-btn"> <a href="./Course_FWI-Review-for-Geophysicists.pdf" style="color: white; text-decoration: none;"> Contents </a> </button>
           </div>
         </div>
       </div>
@@ -860,7 +848,7 @@ footer {
           <p> --> PENDING ...</p>
           <div class="course-footer">
             <span>In-person · English &amp; Spanish <br> Instructor: Dr.Soto </span>
-            <button class="course-btn"> <a href="./Course_Shales_PENDING-JUAN.pdf" style="color: white; text-decoration: underline;"> Contents </a> </button>
+            <button class="course-btn"> <a href="./Course_Shales_PENDING-JUAN.pdf" style="color: white; text-decoration: none;"> Contents </a> </button>
           </div>
         </div>
       </div>
